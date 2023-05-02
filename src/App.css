@@ -1,0 +1,32 @@
+.bg-brand{
+    background:purple;
+}
+
+.otherlinks{
+    color: #ccc !important
+}
+.otherlinks:hover{
+    cursor: pointer;
+    color: #bb9a9a !important
+}
+/* input[type="text"], textarea, input[type="number"], input[type="date"], input[type="email"]{
+    border: 1px solid grey !important;
+    background:#efddff !important;
+    color: black !important;
+    font-weight:bold !important;
+    font-size:16px !important;
+    padding: 8px !important;
+} */
+select{
+    border: 1px solid grey !important;
+    color: black !important;
+    font-size:16px !important;
+    padding: 8px !important; 
+}
+input[type="submit"].btn, button.btn{
+    font-weight:bold !important;
+    font-size:15px !important;
+    padding: 8px 16px !important;
+    height:40px !important;
+    border-radius: 20px !important;
+}
