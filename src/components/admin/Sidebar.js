@@ -19,7 +19,7 @@ const Sidebar = () => {
         {/* <aside id="layout-menu" className="layout-menu menu-vertical menu bg-menu-theme"> */}
         <aside id="layout-menu" className="layout-menu menu-vertical menu bg-primary">
             <div className="app-brand demo">
-            <a href="index.html" className="app-brand-link">
+            <a href="" className="app-brand-link">
               <span className="app-brand-logo demo">
                 
               </span>
@@ -63,7 +63,7 @@ const Sidebar = () => {
             <li className="menu-header small text-uppercase">
               <span className="menu-header-text">Users</span>
             </li>
-            <li className="menu-item">
+            <li className="menu-item active">
               <a href="javascript:void(0);" className="menu-link menu-toggle">
                 <i className="menu-icon tf-icons bx bx-dock-top"></i>
                 <div data-i18n="Account Settings">Doctor</div>
@@ -86,7 +86,7 @@ const Sidebar = () => {
                 </li>
               </ul>
             </li>
-            <li className="menu-item">
+            <li className="menu-item active">
               <a href="javascript:void(0);" className="menu-link menu-toggle">
                 <i className="menu-icon tf-icons bx bx-lock-open-alt"></i>
                 <div data-i18n="Authentications">Lab. Scientist</div>
@@ -109,7 +109,7 @@ const Sidebar = () => {
                 </li>
               </ul>
             </li>
-            <li className="menu-item">
+            <li className="menu-item active">
               <a href="javascript:void(0);" className="menu-link menu-toggle">
                 <i className="menu-icon tf-icons bx bx-cube-alt"></i>
                 <div data-i18n="Misc">Nurse</div>
@@ -127,7 +127,7 @@ const Sidebar = () => {
                 </li>
               </ul>
             </li>
-            <li className="menu-item">
+            <li className="menu-item active">
               <a href="javascript:void(0)" className="menu-link menu-toggle">
                 <i className="menu-icon tf-icons bx bx-box"></i>
                 <div data-i18n="User interface">Pharmacist</div>
