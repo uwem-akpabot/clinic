@@ -1,0 +1,16 @@
+.bg-custom{
+    background:#2124B1 !important;
+    color:#ccc;
+}
+.bg-custom .menu-link{
+    color:#eee !important
+}
+.bg-custom .menu-link:hover{
+    background:#696cff !important;
+    color:#ccc;
+}
+.asterisk{ color:red; font-weight:bold; border-radius:100%; font-size:15px; }
+
+input[type="text"], textarea, input[type="number"], input[type="date"], input[type="email"], select, .input-group-text{
+    border-color:#696cff !important;
+}

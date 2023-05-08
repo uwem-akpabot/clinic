@@ -1,12 +1,11 @@
 // import React, { useContext } from 'react';
 // import AuthContext from '../../context/AuthContext';
 import { Outlet, Link } from 'react-router-dom';
-import Header from './Header';
 import Navbar from "../../components/admin/Navbar";
-// import Footer from './Footer';
-// import logo from './../../images/logo.png'
+import Footer from './Footer';
+import logo from './../../images/logo.png'
 
-const Sidebar = () => {
+const Sidebar = (props) => {
   // let {authTokens, user, logoutUser} = useContext(AuthContext)
   
   return (
@@ -17,13 +16,13 @@ const Sidebar = () => {
 
         {/* Menu */}    
         {/* <aside id="layout-menu" className="layout-menu menu-vertical menu bg-menu-theme"> */}
-        <aside id="layout-menu" className="layout-menu menu-vertical menu bg-primary">
+        <aside id="layout-menu" className="layout-menu menu-vertical menu bg-custom bg-map">
             <div className="app-brand demo">
             <a href="" className="app-brand-link">
               <span className="app-brand-logo demo">
-                
+              <img src={logo} className="header-brand-img" alt="lavalite" style={{width:"50px"}} /> 
               </span>
-              <span className="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span>
+              <span className="app-brand-text demo menu-text fw-bolder ms-2 text-white text-capitalize">{props.company.substring(0, 8)}</span>
             </a>
 
             <a href="javascript:void(0);" className="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -35,12 +34,12 @@ const Sidebar = () => {
 
           <ul className="menu-inner py-1">
             <li className="menu-item active">
-              <Link to="/dash" className="menu-link">
+              <Link to="/" className="menu-link">
                 <i className="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
               </Link>
             </li>
-            <li className="menu-item active">
+            <li className="menu-item">
               <a href="javascript:void(0);"  className="menu-link menu-toggle">
                 <i className="menu-icon tf-icons bx bx-layout"></i>
                 <div data-i18n="Layouts">Admin</div>
@@ -48,14 +47,14 @@ const Sidebar = () => {
 
               <ul className="menu-sub">
                 <li className="menu-item">
-                  <Link to="/dash" className="menu-link">
+                  <Link to="/add-patient" className="menu-link">
                     <div data-i18n="Without menu">Register Patients</div>
                   </Link>
                 </li>
                 <li className="menu-item">
-                  <a href="layouts-without-navbar.html" className="menu-link">
-                    <div data-i18n="Without navbar">Without navbar</div>
-                  </a>
+                  <Link to="/manage-patients" className="menu-link">
+                    <div data-i18n="Without menu">Manage Patients</div>
+                  </Link>
                 </li>
               </ul>
             </li>
@@ -63,7 +62,7 @@ const Sidebar = () => {
             <li className="menu-header small text-uppercase">
               <span className="menu-header-text">Users</span>
             </li>
-            <li className="menu-item active">
+            <li className="menu-item">
               <a href="javascript:void(0);" className="menu-link menu-toggle">
                 <i className="menu-icon tf-icons bx bx-dock-top"></i>
                 <div data-i18n="Account Settings">Doctor</div>
@@ -86,7 +85,7 @@ const Sidebar = () => {
                 </li>
               </ul>
             </li>
-            <li className="menu-item active">
+            <li className="menu-item">
               <a href="javascript:void(0);" className="menu-link menu-toggle">
                 <i className="menu-icon tf-icons bx bx-lock-open-alt"></i>
                 <div data-i18n="Authentications">Lab. Scientist</div>
@@ -109,7 +108,7 @@ const Sidebar = () => {
                 </li>
               </ul>
             </li>
-            <li className="menu-item active">
+            <li className="menu-item">
               <a href="javascript:void(0);" className="menu-link menu-toggle">
                 <i className="menu-icon tf-icons bx bx-cube-alt"></i>
                 <div data-i18n="Misc">Nurse</div>
@@ -127,7 +126,7 @@ const Sidebar = () => {
                 </li>
               </ul>
             </li>
-            <li className="menu-item active">
+            <li className="menu-item">
               <a href="javascript:void(0)" className="menu-link menu-toggle">
                 <i className="menu-icon tf-icons bx bx-box"></i>
                 <div data-i18n="User interface">Pharmacist</div>
@@ -491,37 +490,8 @@ const Sidebar = () => {
               {/* Content */}
 
               <Outlet />
-        
-        
-              <footer className="content-footer footer bg-footer-theme">
-                <div className="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-                  <div className="mb-2 mb-md-0">
-                    ©
-                    <script>
-                      document.write(new Date().getFullYear());
-                    </script>
-                    , made with ❤️ by
-                    <a href="https://themeselection.com" target="_blank" className="footer-link fw-bolder">ThemeSelection</a>
-                  </div>
-                  <div>
-                    <a href="https://themeselection.com/license/" className="footer-link me-4" target="_blank">License</a>
-                    <a href="https://themeselection.com/" target="_blank" className="footer-link me-4">More Themes</a>
 
-                    <a
-                      href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-                      target="_blank"
-                      className="footer-link me-4"
-                      >Documentation</a
-                    >
-
-                    <a
-                      href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
-                      target="_blank"
-                      className="footer-link me-4"
-                      >Support</a>
-                  </div>
-                </div>
-              </footer>
+              <Footer company={props.company} />
 
             <div className="content-backdrop fade"></div>
           </div>

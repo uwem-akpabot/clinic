@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import avatar from './../../assets_admin/img/1.png'
 
 const Navbar = () => {
   return (
@@ -27,18 +28,18 @@ const Navbar = () => {
         <li className="nav-item lh-1 me-3">
             <a
             className="github-button"
-            href="https://github.com/themeselection/sneat-html-admin-template-free"
+            href=""
             data-icon="octicon-star"
             data-size="large"
             data-show-count="true"
             aria-label="Star themeselection/sneat-html-admin-template-free on GitHub"
-            >Star</a>
+            >User</a>
         </li>
 
         <li className="nav-item navbar-dropdown dropdown-user dropdown">
             <a className="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
             <div className="avatar avatar-online">
-                <img src="../assets/img/avatars/1.png" alt className="w-px-40 h-auto rounded-circle" />
+                <img src={avatar} className="w-px-40 h-auto rounded-circle" />
             </div>
             </a>
             <ul className="dropdown-menu dropdown-menu-end">
@@ -47,7 +48,7 @@ const Navbar = () => {
                 <div className="d-flex">
                     <div className="flex-shrink-0 me-3">
                     <div className="avatar avatar-online">
-                        <img src="../assets/img/avatars/1.png" alt className="w-px-40 h-auto rounded-circle" />
+                        <img src={avatar} className="w-px-40 h-auto rounded-circle" />
                     </div>
                     </div>
                     <div className="flex-grow-1">

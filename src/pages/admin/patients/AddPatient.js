@@ -2,9 +2,8 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import swal from 'sweetalert';
-import Basic_RightBar from '../Basic_RightBar';
 
-const AddPatient = ({host_url}) => {
+const AddPatient = (props, {host_url}) => {
     const {register, handleSubmit, reset, formState: { errors } } = useForm();
     let formData = new FormData();
 
@@ -47,104 +46,93 @@ const AddPatient = ({host_url}) => {
 
     return (
         <>
-        <div class="page-header">
-            <div class="row align-items-end">
-                <div class="col-lg-8">
-                    <div class="page-header-title">
-                        <i class="ik ik-user-plus bg-blue"></i>
-                        <div class="d-inline">
-                            <h5>Add Patients</h5>
-                            <span>Fill out this form to add a new patient. Compulsory fields are *</span>
+        <div className="container-xxl flex-grow-1 container-p-y">
+            {/* <h4 className="fw-bold py-3 mb-4"><span className="text-muted fw-light">Admin /</span> Register Patients</h4> */}
+
+            <div className="row">
+            <div className="col-xl">
+                <div className="card mb-4">
+                <div className="card-header d-flex justify-content-between align-items-center">
+                    <h5 className="mb-0">Register Patients / <small className="text-primary text-normal">{props.company.substring(0, 19)}</small> </h5>
+                    <small className="text-muted float-end">
+                    Compulsory fields marked <span className="asterisk">*</span></small>
+                </div>
+                
+                <div className="card-body">
+                    <form id="formAccountSettings">
+                    <div className="row">
+                        <div className="mb-3 col-md-6">
+                        <label for="firstName" className="form-label">First Name <span className="asterisk">*</span></label>
+                        <input className="form-control" type="text" name="fname" placeholder="John" 
+                            {...register("fname", { required: true })} maxLength="40" 
+                            required />
+                            {errors.fname && <small className="text-danger text-xs font-italic">First Name is required</small>}
                         </div>
+
+                        <div className="mb-3 col-md-6">
+                        <label for="lastName" className="form-label">Surname <span className="asterisk">*</span></label>
+                        <input className="form-control" type="text" name="sname" placeholder="Doe" 
+                            {...register("sname", { required: true })} maxLength="20" 
+                            required />
+                            {errors.sname && <small className="text-danger text-xs font-italic">Surname is required</small>}
+                        </div>
+
+                        <div className="mb-3 col-md-6">
+                        <label for="lastName" className="form-label">Gender <span className="asterisk">*</span></label>
+                        <select className="select2 form-select" name="gender" 
+                            {...register("gender", { required: true })} required >
+                            <option value="">- Choose -</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                        {errors.gender && <small className="text-danger text-xs font-italic">Gender is required</small>}
+                        </div>
+                        
+                        <div className="mb-3 col-md-6">
+                        <label for="organization" className="form-label">Address</label>
+                        <input type="text" className="form-control" name="address" placeholder="123 Sample Street, Allen Avenue, Ikeja, Lagos" 
+                            {...register("address")} />
+                        </div>
+
+                        <div className="mb-3 col-md-6">
+                        <label className="form-label" for="phoneNumber">Phone Number</label>
+                        <div className="input-group input-group-merge">
+                            <span className="input-group-text">NG (+234)</span>
+                            <input type="text" name="phone" className="form-control" placeholder="803 456 7890"
+                            {...register("phone")} maxLength="12" />
+                        </div>
+                        </div>
+
+                        <div className="mb-3 col-md-6">
+                        <label for="email" className="form-label">E-mail</label>
+                        <input className="form-control" type="email" name="email" placeholder="john.doe@example.com"
+                            {...register("email")} maxLength="40" />
+                        </div>
+
+                        <div className="mb-3 col-md-6">
+                        <label for="lastName" className="form-label">Contact Person's Name</label>
+                        <input className="form-control" type="text" name="contact_person" placeholder="e.g. Brother's name ..." 
+                            {...register("contact_person", { required: true })} maxLength="40" />
+                        </div>
+
+                        <div className="mb-3 col-md-6">
+                        <label for="lastName" className="form-label">Contact Person's Phone</label>
+                        <input className="form-control" type="text" name="contact_person_phone" placeholder="e.g. Brother's phone no. ..." 
+                            {...register("contact_person_phone")} maxLength="30" />
+                        </div>
+                        
                     </div>
+                    <div className="mt-2">
+                        <button onClick={handleSubmit(submitForm)} className="btn btn-primary me-2">Save Record</button>
+                        <button type="reset" className="btn btn-outline-secondary">Cancel</button>
+                    </div>
+                    </form>
                 </div>
-                <div class="col-lg-4">
-                    <nav class="breadcrumb-container" aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <a href="../index.html"><i class="ik ik-home"></i></a>
-                            </li>
-                            <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Components</li>
-                        </ol>
-                    </nav>
+
                 </div>
+            </div>
             </div>
         </div> 
-                            
-        <div className="main-content-inner">
-            <div className="row">
-                <div className="col-12 col-md-8">
-                        {/* </div> */}
-                    <div className="card">
-                        <div className="card-body">
-                            {/* <h4 className="header-title">Add Patient</h4> */}
-                            <form className="needs-validation" novalidate="">
-
-                                <div className="form-row">
-                                    <div className="col-12 col-md-6 mb-3">
-                                        <label for="validationCustom01"><b>First Name(s) *</b></label>
-                                        <input type="text" name="fname" className="form-control" id="validationCustom01" placeholder="First name" 
-                                            {...register("fname", { required: true })} maxLength="40" 
-                                            required />
-                                            {errors.fname && <small className="text-danger text-xs font-italic">First Name is required</small>}
-                                    </div>
-                                    <div className="col-12 col-md-6 mb-3">
-                                        <label for="validationCustom02"><b>Surname *</b></label>
-                                        <input type="text" name="sname" className="form-control" id="validationCustom02" placeholder="Surname" 
-                                            {...register("sname", { required: true })} maxLength="20" 
-                                            required />
-                                        {errors.sname && <small className="text-danger text-xs font-italic">Surname is required</small>}
-                                    </div>
-                                    <div className="col-12 col-md-4 mb-3">
-                                        <label for="validationCustom02"><b>Gender *</b></label>
-                                        <select name="gender" className="form-control" id="validationCustom02" 
-                                            {...register("gender", { required: true })} required >
-                                            <option value="">- Choose -</option>
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
-                                        </select>
-                                        {errors.gender && <small className="text-danger text-xs font-italic">Gender is required</small>}
-                                    </div>
-                                    <div className="col-12 col-md-8 mb-3">
-                                        <label for="validationCustom03"><b>Contact Address</b></label>
-                                        <input type="text" name="address" className="form-control" id="validationCustom03" placeholder="Address" 
-                                            {...register("address")} />
-                                    </div>
-                                    <div className="col-12 col-md-6 mb-3">
-                                        <label for="validationCustom04"><b>Patient's Phone No.</b></label>
-                                        <input type="number" name="phone" className="form-control" id="validationCustom04" placeholder="Phone number" 
-                                        {...register("phone")} maxLength="12" />
-                                    </div>
-                                    <div className="col-12 col-md-6 mb-3">
-                                        <label for="validationCustom01"><b>Email </b></label>
-                                        <input type="email" name="email" className="form-control" id="validationCustom01" placeholder="Email" 
-                                            {...register("email")} maxLength="40" />
-                                    </div>
-                                </div>
-                                <div className="form-row">
-                                    <div className="col-12 col-md-6 mb-3">
-                                        <label for="validationCustom02"><b>Contact Person's Name</b></label>
-                                        <input type="text" name="contact_person" className="form-control" id="validationCustom02" placeholder="Contact person" 
-                                            {...register("contact_person", { required: true })} maxLength="40" />
-                                    </div>
-                                    <div className="col-12 col-md-6 mb-3">
-                                        <label for="validationCustom02"><b>Contact Person's Phone</b></label>
-                                        <input type="text" name="contact_person_phone" className="form-control" id="validationCustom02" placeholder="Contact person's phone" 
-                                            {...register("contact_person_phone")} maxLength="30" />
-                                    </div>
-                                </div>
-
-                                <button onClick={handleSubmit(submitForm)} className="btn btn-primary mt-2">Save Record</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-                <Basic_RightBar />
-
-            </div>
-        </div>
     </>
     )
 }
